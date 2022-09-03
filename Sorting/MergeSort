@@ -1,0 +1,65 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args)
+	{
+		int arr[]={9,8,7,6,5,4};
+		MergeSort(arr,0,arr.length-1);
+		System.out.println("After Merging elements are" );
+		 for(int i=0;i<arr.length;i++)
+	    {
+	        System.out.print(arr[i]+" ");
+	    }
+	}
+	public static void Merge(int arr[],int l,int m,int r)
+	{
+	    int t[]=new int[r+1];
+	    int i=l,j=m+1,k=l;
+	    while(i<=m&&j<=r)
+	    {
+	        if(arr[i]<=arr[j])
+	        {
+	            t[k]=arr[i];
+	            i++;
+	        }
+	        else
+	        {
+	           t[k]=arr[j];
+	            j++; 
+	        }
+	        k++;
+	    }
+	    while(i<=m)
+	    {
+	        t[k]=arr[i];
+	        k++;
+	        i++;
+	    }
+	    while(j<=r)
+	    {
+	        t[k]=arr[j];//if we dont store array in 3rd variable,it will substitute 9 with 8,and 9 will perish
+	        j++;
+	        k++;
+	    }
+	    for(i=l;i<=r;i++)
+	    {
+	        arr[i]=t[i];
+	    }
+	    for(i=l;i<=r;i++)
+	    {
+	        System.out.print(arr[i]+" ");
+	    }
+	     System.out.println();
+	}
+	public static void MergeSort(int arr[],int l,int r)
+	{
+	    int m;
+	    if(l<r)
+	    {
+	        m=(l+r)/2;
+	        MergeSort(arr,l,m);
+	        MergeSort(arr,m+1,r);
+	        Merge(arr,l,m,r);
+	    }
+	}
+}
