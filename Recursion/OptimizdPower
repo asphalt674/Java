@@ -1,0 +1,41 @@
+import java.util.*;
+public class power
+{
+    public static int pow(int a,int n)
+    {
+          int d;
+        if(n==0)
+        {
+            return 1;
+        }
+        else
+        {
+             d=a*pow(a,n-1);
+             return d;
+        }
+        
+    }
+    public static int optimzedPower(int a,int n)//O(logn)
+    {
+        if(n==0)
+        {
+            return 1;
+        }
+        int halfpower=optimzedPower(a,n/2);
+        int halfpowersq=halfpower*halfpower;
+       // int halfpowersq=optimzedPower(a,n/2)*optimzedPower(a,n/2);O(n)
+        
+        if(n%2!=0)//n=0dd
+        {
+             halfpowersq=a*halfpowersq;   
+        }
+         return halfpowersq; 
+     }
+    public static void main(String[]args)
+    {
+        int a=2;
+        int n=10;
+        System.out.println(pow(a,n));
+        System.out.println(optimzedPower(a,n));
+    }
+}
