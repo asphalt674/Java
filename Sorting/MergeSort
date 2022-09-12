@@ -1,20 +1,12 @@
 import java.util.*;
 public class Main
 {
-	public static void main(String[] args)
-	{
-		int arr[]={9,8,7,6,5,4};
-		MergeSort(arr,0,arr.length-1);
-		System.out.println("After Merging elements are" );
-		 for(int i=0;i<arr.length;i++)
-	    {
-	        System.out.print(arr[i]+" ");
-	    }
-	}
 	public static void Merge(int arr[],int l,int m,int r)
 	{
-	    int t[]=new int[r+1];
-	    int i=l,j=m+1,k=l;
+	    int t[]=new int[r-l+1];
+	    int i=l;//iterator for left part
+	    int j=m+1;//iterator for right part
+	    int k=0;//itertar for temp(t)
 	    while(i<=m&&j<=r)
 	    {
 	        if(arr[i]<=arr[j])
@@ -29,21 +21,20 @@ public class Main
 	        }
 	        k++;
 	    }
+	    //for leftover elements of 1st sorted part(left)
 	    while(i<=m)
 	    {
-	        t[k]=arr[i];
-	        k++;
-	        i++;
+	        t[k++]=arr[i++];
 	    }
+	    //for leftover elements of 1st sorted part(right)
 	    while(j<=r)
 	    {
-	        t[k]=arr[j];//if we dont store array in 3rd variable,it will substitute 9 with 8,and 9 will perish
-	        j++;
-	        k++;
+	        t[k++]=arr[j++];//if we dont store array in 3rd variable,it will substitute 9 with 8,and 9 will perish
 	    }
-	    for(i=l;i<=r;i++)
+	    //copy temp(t) to original arr
+	    for(i=l,k=0;i<=r;i++,k++)
 	    {
-	        arr[i]=t[i];
+	        arr[i]=t[k];
 	    }
 	    for(i=l;i<=r;i++)
 	    {
@@ -57,9 +48,19 @@ public class Main
 	    if(l<r)
 	    {
 	        m=(l+r)/2;
-	        MergeSort(arr,l,m);
-	        MergeSort(arr,m+1,r);
+	        MergeSort(arr,l,m);//left part
+	        MergeSort(arr,m+1,r);//right part
 	        Merge(arr,l,m,r);
 	    }
+	}
+	public static void main(String[] args)
+	{
+		int arr[]={9,8,7,6,5,4};
+		MergeSort(arr,0,arr.length-1);
+		System.out.println("Array after sorting elements using MergeSort are " );
+		 for(int i=0;i<arr.length;i++)
+	    	{
+	       		System.out.print(arr[i]+" ");
+	    	}
 	}
 }
