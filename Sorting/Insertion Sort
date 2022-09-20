@@ -1,0 +1,41 @@
+public class Main
+{
+    public static void InsertionSort(int a[])
+    {
+        int i,j;
+		for(i=1;i<a.length;i++)
+		{
+		   int cur=a[i];
+		   int prev=i-1;
+		   while(prev>=0&&a[prev]>cur)
+		   {
+		       a[prev+1]=a[prev];
+		       prev--;
+		   }
+		   a[prev+1]=cur;
+		} 
+    }
+    public static void printarr(int a[])
+    {
+        for(int i=0;i<a.length;i++)
+		{
+		    System.out.print(a[i]+" ");
+		}
+    }
+	public static void main(String[] args)
+	{
+	    Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the size of the array");
+		int n=sc.nextInt();
+		int a[]=new int[n];
+		int i,j;
+		System.out.println("Enter the elements of the array");
+		for(i=0;i<n;i++)
+		{
+		    a[i]=sc.nextInt();
+		}
+		InsertionSort(a);
+		System.out.println("The elements of the array after performing Insertion sort are");
+		printarr(a);
+	}
+}
