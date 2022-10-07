@@ -1,0 +1,25 @@
+//Max sum of Subarrays
+import java.util.*;
+public class Main
+{
+    public static int kadanes(int a[])
+    {
+        int ms=Integer.MIN_VALUE,sum=0;
+        for(int i=0;i<a.length;i++)
+        {
+            sum=sum+a[i];
+            if(sum<0)
+            {
+                sum=0;
+            }
+            ms=Math.max(ms,sum);
+        }
+        return ms;
+    }
+	public static void main(String[] args) 
+	{
+	    Scanner sc=new Scanner(System.in);
+		int a[]={1,-2,6,-1,3};
+		System.out.print(kadanes(a));
+	}
+}
