@@ -1,0 +1,22 @@
+//Pairs in array 
+import java.util.*;
+public class Main
+{
+    public static void pairs(int a[])
+    {
+        for(int i=0;i<a.length-1;i++)
+        {
+            for(int j=i;j<a.length;j++)
+            {
+                System.out.print(a[j]+" ");
+            }
+            System.out.println();
+        }
+    }
+	public static void main(String[] args) 
+	{
+	    Scanner sc=new Scanner(System.in);
+		int a[]={2,4,6,8,10};
+		pairs(a);
+	}
+}
