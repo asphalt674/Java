@@ -18,6 +18,7 @@ public class LinkedList
         if(head==null)
         {
             head=tail=newNode;
+            return;//or else head will point itself and infinite loop will run
         }
         newNode.next=head;
         head=newNode;
