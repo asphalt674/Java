@@ -1,0 +1,36 @@
+import java.util.ArrayList;
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) 
+	{
+	    //here indexing starts from 0
+	    Scanner sc=new Scanner(System.in);
+		ArrayList<Integer>list=new ArrayList<>();
+		//Add Operation
+		list.add(1);
+		list.add(2);
+		list.add(3);
+		list.add(4);
+		System.out.println(list);
+		//Get Operation
+		int element=list.get(2);
+		System.out.println(element);
+		//Delete operation
+		list.remove(2);//removes element at 2nd index
+		System.out.println(list);
+		//Modify operation
+		list.set(2,10);
+		System.out.println(list);
+		//Size of ArrayList
+		System.out.println(list.size());
+		//swapings index 1 and index 2
+		int temp=list.get(2);
+		list.set(2,list.get(1));
+		list.set(1,temp);
+		System.out.println(list);
+		//Contains operation
+		System.out.println(list.contains(1));
+		System.out.println(list.contains(3));
+	}
+}
