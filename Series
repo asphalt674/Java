@@ -1,0 +1,30 @@
+//Series 1-x^2/2!+x^4/4!-x^6/6!+...
+import java.util.*;
+public class Main
+{
+public static void main (String[] args) 
+{
+    Scanner sc=new Scanner(System.in);
+    System.out.println("Enter the number of terms");
+    int n=sc.nextInt();
+     System.out.println("Enter the value");
+    int x=sc.nextInt();
+    double sum=0;
+    int i;
+    int f=1;
+    int c=0;//if we write inside the loop it will be reassigned to 0 again,not (0,2,4,6..2n)
+    for(i=1;i<=n;i++)//for(i=1,c=0;i<=n;i++,c+=2)
+    {
+        if(i%2==0)
+        {
+            sum=sum-(Math.pow(x,c)/(double)(f));
+        }
+        else
+        {
+            sum=sum+(Math.pow(x,c)/(double)(f));
+        }
+        f=f*(c+1)*(c+2);
+    }
+    System.out.println("Sum of Series is"+sum);
+}
+}
