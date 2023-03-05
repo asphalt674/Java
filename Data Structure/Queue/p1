@@ -5,13 +5,13 @@ public class queue
     {
         int i,j;
         Queue<Integer> q=new LinkedList<>();
-        q.add(10);
+        q.add(10);//q.offer(10);
         q.add(20);
         q.add(30);
         while(!q.isEmpty())
         {
             System.out.print(q.peek()+" ");
-            q.poll();
+            q.poll();//samw as q.remove()l
         }
     }
 }
