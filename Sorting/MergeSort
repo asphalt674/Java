@@ -3,7 +3,7 @@ public class Main
 {
 	public static void Merge(int arr[],int l,int m,int r)
 	{
-	    int t[]=new int[r-l+1];
+	    int t[]=new int[r-l+1];//as starting from l not 0 so to prevent index out of bound error
 	    int i=l;//iterator for left part
 	    int j=m+1;//iterator for right part
 	    int k=0;//itertar for temp(t)
