@@ -1,41 +1,56 @@
-public class Main
-{
-    public static void InsertionSort(int a[])
-    {
-        int i,j;
-		for(i=1;i<a.length;i++)
-		{
-		   int cur=a[i];
-		   int prev=i-1;
-		   while(prev>=0&&a[prev]>cur)
-		   {
-		       a[prev+1]=a[prev];
-		       prev--;
-		   }
-		   a[prev+1]=cur;
-		} 
+package Sorting;
+import java.util.*;
+public class CountSort {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter the size of the array");
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+
+        System.out.println("Enter the elements of the array");
+        for(int i=0;i<n;i++)
+        {
+            arr[i]=sc.nextInt();
+        }
+        int res[]=CountingSort(arr);
+        System.out.println("The array elements after Sorting : ");
+        for(int i=0;i<n;i++)
+        {
+           System.out.print5(res[i]+" ");
+        }
     }
-    public static void printarr(int a[])
+    public static int[] CountingSort(int arr[])
     {
-        for(int i=0;i<a.length;i++)
-		{
-		    System.out.print(a[i]+" ");
-		}
+        int n=arr.length;
+        int max=Integer.MIN_VALUE;
+        int res[]=new int[n];
+        for(int i=0;i<n;i++)
+        {
+            max=Math.max(arr[i],max);
+        }
+        if(max==Integer.MIN_VALUE)
+        {
+            System.out.println("Empty Array");
+            return res;
+        }
+        int count[]=new int[max+1];
+        //Calculating the frequency
+        for(int i=0;i<n;i++)
+        {
+            count[arr[i]]++;
+        }
+        //find cumulative frequency
+        for(int i=1;i<=max;i++) {
+            count[i] += count[i - 1];
+        }
+        //Advantage of cumulative frequency is that we need to traverse n times
+        //and traversing from back maintains Stable sort(Relative Order of duplicate elements remain same
+        for(int i=n-1;i>=0;i--)
+        {
+            int val=arr[i];
+            int pos=--count[val];
+            res[pos]=val;
+        }
+        return res;
     }
-	public static void main(String[] args)
-	{
-	    Scanner sc=new Scanner(System.in);
-		System.out.println("Enter the size of the array");
-		int n=sc.nextInt();
-		int a[]=new int[n];
-		int i,j;
-		System.out.println("Enter the elements of the array");
-		for(i=0;i<n;i++)
-		{
-		    a[i]=sc.nextInt();
-		}
-		InsertionSort(a);
-		System.out.println("The elements of the array after performing Insertion sort are");
-		printarr(a);
-	}
 }
