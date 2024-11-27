@@ -32,7 +32,7 @@ public class heap
         buildheap(a,n);
         for(int i=n-1;i>0;i--)
         {
-            swap(a,0,i);
+            swap(a,0,i);//largest element goes at the last and so on..
             heapify(a,i,0);
         }
     }
